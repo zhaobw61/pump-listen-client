@@ -16,3 +16,10 @@ export const updatePairInfoService = async (info) => {
     ...info,
   });
 };
+
+// 删除交易对
+export const deletePairService = async (address) => {
+  const res = await axios.post('/deletePair', {
+    address: address,
+  });
+};

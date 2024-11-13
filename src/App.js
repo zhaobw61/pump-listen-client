@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Space, Table, Modal, Input } from 'antd';
-import { getPairListService, updatePairInfoService } from './service/index';
+import {
+  getPairListService,
+  updatePairInfoService,
+  deletePairService,
+} from './service/index';
 
 function App() {
   const inputRef = useRef(null);
@@ -24,11 +28,11 @@ function App() {
     });
   };
   const handleDeletePair = (target) => {
-    console.log(target);
+    deletePairService(target.address);
+    getPairList();
   };
   const handleOk = () => {
     setIsModalOpen(false);
-    console.log('inputRef', inputRef);
     inputRef.current.input.value = ''; // 不知道为什么效果
     updatePairInfo();
     getPairList();
