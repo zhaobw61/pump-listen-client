@@ -5,6 +5,7 @@ import {
   updatePairInfoService,
   deletePairService,
 } from './service/index';
+import moment from 'moment';
 
 function App() {
   const inputRef = useRef(null);
@@ -79,6 +80,12 @@ function App() {
       title: '创建时间',
       dataIndex: 'creationTime',
       key: 'creationTime',
+      render: (_, record) => {
+        console.log(_);
+        const dateTime = moment(Number(_)).format('YYYY-MM-DD HH:mm:ss');
+        console.log(dateTime);
+        return <div>{dateTime}</div>;
+      },
     },
     {
       title: '推特',
