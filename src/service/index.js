@@ -26,3 +26,11 @@ export const deletePairService = async (address) => {
     address: address,
   });
 };
+
+// 获取推特热度
+export const getTwitterLogHotService = async (address) => {
+  const res = await axiosInstance.post('/getAddressHot', {
+    address: address,
+  });
+  return res.data;
+};

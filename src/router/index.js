@@ -12,11 +12,11 @@ const routes = [
     element: <CoinList />,
   },
   {
-    path: '/coinHot',
+    path: '/coinHot/:address',
     element: <CoinHot />,
   },
   // 捕获所有未匹配的路径
-  { path: '*', element: <Navigate to='/' /> },
+  // { path: '*', element: <Navigate to='/' /> },
 ];
 
 export default routes;

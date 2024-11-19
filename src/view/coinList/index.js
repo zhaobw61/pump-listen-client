@@ -1,13 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Space, Table, Modal, Input } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import moment from 'moment';
 import {
   getPairListService,
   updatePairInfoService,
   deletePairService,
 } from '../../service/index';
-import moment from 'moment';
 
 function App() {
+  const navigate = useNavigate();
   const inputRef = useRef(null);
   const [pairList, setPairList] = useState([]);
   const [paginationInfo, setPaginationInfo] = useState({
@@ -41,7 +43,10 @@ function App() {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-  const handleCoinhot = () => {};
+  const handleCoinhot = (target) => {
+    const url = `${window.location.origin}/#/coinHot/${target.address}`;
+    window.open(url, '_blank');
+  };
   async function updatePairInfo() {
     const res = await updatePairInfoService(updatePair);
     console.log('res', res);
