@@ -11,6 +11,7 @@
     "moment": "^2.30.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
@@ -38,5 +39,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://43.155.83.101"
+  "proxy": "http://127.0.0.1:3000"
 }
