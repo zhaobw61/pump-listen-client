@@ -34,3 +34,16 @@ export const getTwitterLogHotService = async (address) => {
   });
   return res.data;
 };
+
+// 获取热门代币列表
+export const getHotCoinListService = async () => {
+  const res = await axiosInstance.get('/hotCoinlist');
+  console.log(res);
+  return res.data;
+};
+
+// 获取即将打满列表
+export const getProgressCoinListService = async () => {
+  const res = await axiosInstance.get('/progressCoinList');
+  return res.data;
+};
