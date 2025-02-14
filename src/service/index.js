@@ -47,3 +47,9 @@ export const getProgressCoinListService = async () => {
   const res = await axiosInstance.get('/progressCoinList');
   return res.data;
 };
+
+// 获取已开盘列表
+export const getOpenedCoinListService = async () => {
+  const res = await axiosInstance.get('/openedCoinList');
+  return res.data;
+}

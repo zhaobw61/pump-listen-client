@@ -6,6 +6,7 @@ import styles from './index.module.css';
 import {
   getHotCoinListService,
   getProgressCoinListService,
+  getOpenedCoinListService
 } from '../../service/index';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
 
   const [hotCoinList, setHotCoinList] = useState([]);
   const [progressCoinList, setProgressCoinList] = useState([]);
+  const [openedCoinList, setOpenedCoinList] = useState([]);
 
   async function getPairList() {
     const res = await getHotCoinListService();
@@ -24,19 +26,30 @@ function App() {
     }
   }
 
-  async function getProgressCoinList(params) {
+  async function getProgressCoinList() {
     const res = await getProgressCoinListService();
     const { success, data } = res;
     if (success) {
       setProgressCoinList([...data]);
     } else {
-      alert('刷新列表失败');
+      alert('刷新即将打满列表失败');
+    }
+  }
+
+  async function getOpenedCoinList() {
+    const res = await getOpenedCoinListService();
+    const { success, data } = res;
+    if (success) {
+      setOpenedCoinList([...data]);
+    } else {
+      alert('刷新已开盘列表失败');
     }
   }
 
   useEffect(() => {
-    getPairList();
+    // getPairList();
     getProgressCoinList();
+    getOpenedCoinList();
   }, []);
 
   const columns = [
@@ -64,10 +77,10 @@ function App() {
     <div className='App'>
       <Flex gap='large'>
         <div className={styles.tableWrap}>
-          <h2>热门代币</h2>
+          <h2>已开盘的代币</h2>
           <Table
             columns={columns}
-            dataSource={hotCoinList}
+            dataSource={openedCoinList}
             pagination={false}
           />
         </div>
