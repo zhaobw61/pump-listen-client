@@ -52,4 +52,4 @@ export const getProgressCoinListService = async () => {
 export const getOpenedCoinListService = async () => {
   const res = await axiosInstance.get('/openedCoinList');
   return res.data;
-}
+};
